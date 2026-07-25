@@ -3,16 +3,7 @@ export function initCustomCursor() {
 
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
-
-    // Promove o cursor para a "top layer" do browser (mesma camada
-    // onde o <dialog> em fullscreen é renderizado), para nunca ficar
-    // escondido atrás da imagem.
-    cursor.setAttribute('popover', 'manual');
     document.body.appendChild(cursor);
-
-    if (cursor.showPopover) {
-        cursor.showPopover();
-    }
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -47,15 +38,16 @@ export function initCustomCursor() {
     document.addEventListener('mouseleave', () => cursor.classList.add('custom-cursor--hidden'));
     document.addEventListener('mouseenter', () => cursor.classList.remove('custom-cursor--hidden'));
 
-    // Sempre que o lightbox (ou qualquer <dialog>) abre, ele entra
-    // também na "top layer" e ficaria por cima do cursor. Ao re-promover
-    // o cursor (hide + show) depois disso, ele volta a ficar no topo.
+    // Enquanto o lightbox está aberto, o cursor passa a viver DENTRO do <dialog>
+    // (herda a "top layer" por ser descendente, sem depender da Popover API).
+    // Ao fechar, volta para o <body>.
     const lightbox = document.getElementById('image-lightbox');
-    if (lightbox && cursor.showPopover) {
+    if (lightbox) {
         const observer = new MutationObserver(() => {
             if (lightbox.open) {
-                cursor.hidePopover();
-                cursor.showPopover();
+                lightbox.appendChild(cursor);
+            } else {
+                document.body.appendChild(cursor);
             }
         });
         observer.observe(lightbox, { attributes: true, attributeFilter: ['open'] });
