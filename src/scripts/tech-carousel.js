@@ -1,19 +1,65 @@
 
 // Ícones disponíveis em: https://devicon.dev/
-const TECHS = [
-    { name: 'HTML5', icon: 'html5/html5-original' },
-    { name: 'CSS3', icon: 'css3/css3-original' },
-    { name: 'JavaScript', icon: 'javascript/javascript-original' },
-    { name: 'React', icon: 'react/react-original' },
-    { name: 'Node.js', icon: 'nodejs/nodejs-original' },
-    { name: 'Flutter', icon: 'flutter/flutter-original' },
-    { name: 'PostgreSQL', icon: 'postgresql/postgresql-original' },
-    { name: 'C', icon: 'c/c-original' },
-    { name: 'Git', icon: 'git/git-original' },
-    { name: 'GitHub', icon: 'github/github-original' },
-];
 
-const CDN_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons';
+const DEVICON = (icon) =>
+    `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}.svg`;
+
+const SIMPLE_ICON = (slug) => `https://cdn.simpleicons.org/${slug}`;
+
+const TECHS = [
+    // Languages
+    { name: 'C', url: DEVICON('c/c-original') },
+    { name: 'C++', url: DEVICON('cplusplus/cplusplus-original') },
+    { name: 'HTML5', url: DEVICON('html5/html5-original') },
+    { name: 'CSS3', url: DEVICON('css3/css3-original') },
+    { name: 'JavaScript', url: DEVICON('javascript/javascript-original') },
+    { name: 'Markdown', url: DEVICON('markdown/markdown-original') },
+
+    // Frontend
+    { name: 'React', url: DEVICON('react/react-original') },
+    { name: 'Vite', url: DEVICON('vitejs/vitejs-original') },
+    { name: 'Bootstrap', url: DEVICON('bootstrap/bootstrap-original') },
+
+    // Backend
+    { name: 'Node.js', url: DEVICON('nodejs/nodejs-original') },
+    { name: 'Express.js', url: DEVICON('express/express-original') },
+
+    // Mobile
+    { name: 'Flutter', url: DEVICON('flutter/flutter-original') },
+    { name: 'Dart', url: DEVICON('dart/dart-original') },
+
+    // DBMS
+    { name: 'Microsoft SQL Server', url: DEVICON('microsoftsqlserver/microsoftsqlserver-plain') },
+    { name: 'PostgreSQL', url: DEVICON('postgresql/postgresql-original') },
+    { name: 'MongoDB', url: DEVICON('mongodb/mongodb-original') },
+
+    // ORM
+    { name: 'Sequelize', url: SIMPLE_ICON('sequelize') },
+
+    // Hosting
+    { name: 'Render', url: SIMPLE_ICON('render') },
+    { name: 'Firebase', url: DEVICON('firebase/firebase-plain') },
+
+    // Frameworks / Platforms / Libraries
+    { name: 'NPM', url: DEVICON('npm/npm-original-wordmark') },
+    { name: 'Nodemon', url: SIMPLE_ICON('nodemon') },
+    { name: 'JWT', url: SIMPLE_ICON('jsonwebtokens') },
+    { name: 'React Hook Form', url: SIMPLE_ICON('reacthookform') },
+    { name: 'React Router', url: SIMPLE_ICON('reactrouter') },
+
+    // IDEs / Editors
+    { name: 'Visual Studio', url: DEVICON('visualstudio/visualstudio-plain') },
+    { name: 'Visual Studio Code', url: DEVICON('vscode/vscode-original') },
+    { name: 'Android Studio', url: DEVICON('androidstudio/androidstudio-original') },
+    { name: 'Arduino IDE', url: DEVICON('arduino/arduino-original') },
+    { name: 'Doxygen', url: SIMPLE_ICON('doxygen') },
+
+    // DevOps
+    { name: 'Jira', url: DEVICON('jira/jira-original') },
+
+    // Networking
+    { name: 'Cisco', url: SIMPLE_ICON('cisco') },
+];
 
 export function initTechCarousel() {
     const track = document.querySelector('.tech-carousel__track');
@@ -21,9 +67,9 @@ export function initTechCarousel() {
 
     const iconsHtml = TECHS.map(
         (t) =>
-            `<img src="${CDN_BASE}/${t.icon}.svg" alt="${t.name}" title="${t.name}" class="tech-carousel__icon" loading="lazy" />`
+            `<img src="${t.url}" alt="${t.name}" title="${t.name}" class="tech-carousel__icon" loading="lazy" onerror="this.style.display='none'" />`
     ).join('');
 
-    // Duplica a lista para o loop infinito ficar contínuo (sem "salto" no fim)
+    // Duplica a lista para o loop infinito ficar contínuo
     track.innerHTML = iconsHtml + iconsHtml;
 }

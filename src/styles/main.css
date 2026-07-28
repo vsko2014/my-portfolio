@@ -1044,7 +1044,6 @@ button.social-btn {
 .tech-carousel__icon:hover {
   opacity: 1;
   filter: grayscale(0%);
-  transform: translateY(-4px);
 }
 
 @keyframes tech-scroll {
