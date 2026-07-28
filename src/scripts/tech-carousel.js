@@ -1,10 +1,10 @@
 
 // Ícones disponíveis em: https://devicon.dev/
-
 const DEVICON = (icon) =>
     `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${icon}.svg`;
 
-const SIMPLE_ICON = (slug) => `https://cdn.simpleicons.org/${slug}`;
+// Adicionada a flag /white por defeito no Simple Icons para garantir visibilidade no fundo escuro
+const SIMPLE_ICON = (slug) => `https://cdn.simpleicons.org/${slug}/white`;
 
 const TECHS = [
     // Languages
@@ -13,7 +13,7 @@ const TECHS = [
     { name: 'HTML5', url: DEVICON('html5/html5-original') },
     { name: 'CSS3', url: DEVICON('css3/css3-original') },
     { name: 'JavaScript', url: DEVICON('javascript/javascript-original') },
-    { name: 'Markdown', url: DEVICON('markdown/markdown-original') },
+    { name: 'Markdown', url: SIMPLE_ICON('markdown') }, // Versão branca do Markdown
 
     // Frontend
     { name: 'React', url: DEVICON('react/react-original') },
@@ -22,7 +22,7 @@ const TECHS = [
 
     // Backend
     { name: 'Node.js', url: DEVICON('nodejs/nodejs-original') },
-    { name: 'Express.js', url: DEVICON('express/express-original') },
+    { name: 'Express.js', url: SIMPLE_ICON('express') }, // Express em branco via Simple Icons
 
     // Mobile
     { name: 'Flutter', url: DEVICON('flutter/flutter-original') },
@@ -44,11 +44,10 @@ const TECHS = [
     { name: 'NPM', url: DEVICON('npm/npm-original-wordmark') },
     { name: 'Nodemon', url: SIMPLE_ICON('nodemon') },
     { name: 'JWT', url: SIMPLE_ICON('jsonwebtokens') },
-    { name: 'React Hook Form', url: SIMPLE_ICON('reacthookform') },
     { name: 'React Router', url: SIMPLE_ICON('reactrouter') },
 
     // IDEs / Editors
-    { name: 'Visual Studio', url: DEVICON('visualstudio/visualstudio-plain') },
+    { name: 'Visual Studio 2022', url: DEVICON('visualstudio/visualstudio-plain') },
     { name: 'Visual Studio Code', url: DEVICON('vscode/vscode-original') },
     { name: 'Android Studio', url: DEVICON('androidstudio/androidstudio-original') },
     { name: 'Arduino IDE', url: DEVICON('arduino/arduino-original') },
