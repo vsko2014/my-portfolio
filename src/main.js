@@ -3,8 +3,7 @@ import { initSmoothScroll } from './scripts/smooth-scroll.js';
 import { initScrollAnimations } from './scripts/animations.js';
 import { initParticlesBackground } from './scripts/particles-background.js';
 import { initProjectsModal } from './scripts/projects-modal.js';
-import { initCustomCursor } from './scripts/custom-cursor.js';
-// import { initBoxReveal } from './scripts/box-reveal.js';
+import { initTechCarousel } from './scripts/tech-carousel.js';
 
 // 1. Ativa o scroll suave (Lenis)
 initSmoothScroll();
@@ -20,7 +19,8 @@ initParticlesBackground({
 
 initProjectsModal();
 
-initCustomCursor();
+initTechCarousel();
+
 
 const emailBtn = document.getElementById('copy-email-btn');
 const emailTitle = document.getElementById('email-btn-title');
@@ -73,8 +73,3 @@ if (floatingCvBtn) {
     }
   });
 }
-
-// initBoxReveal({
-//   boxSelector: '.bg-sequence__box',
-//   sectionSelector: '.bg-sequence',
-// });
